@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const connectDB = require('./config/db');
+const connectDB = require('./config/db');  // Adjust the path for the db config
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -19,6 +19,11 @@ app.use('/trips', require('./routes/tripRouter'));
 app.use('/users', require('./routes/userRouter'));
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+app.get('/', (req, res) => {
+  res.send('Welcome to the Travel App Backend 🚀');
 });
+
+// Export the serverless function
+module.exports = (req, res) => {
+  app(req, res);  // Pass the request and response to the Express app
+};
