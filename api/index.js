@@ -21,10 +21,26 @@ app.use('/categories', require('../routes/categoryRouter'));
 app.use('/trips', require('../routes/tripRouter'));
 app.use('/users', require('../routes/userRouter'));
 
-// Start server
+
+// Handle GET requests to the root path ('/')
 app.get('/', (req, res) => {
-  res.send('Welcome to the Travel App Backend 🚀');
+  res.setHeader('Content-Type', 'text/html'); // Set the content type to HTML
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Travel App Backend</title>
+    </head>
+    <body>
+      <h1>Welcome to the Travel App Backend</h1>
+      <p>This is the backend API for the Travel App.</p>
+    </body>
+    </html>
+  `);
 });
+
+
+
 
 // Export the serverless function
 module.exports = (req, res) => {
