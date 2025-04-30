@@ -1,7 +1,7 @@
 // routes/hotelRouter.js
 const express = require('express');
 const router = express.Router();
-const hotelController = require('../controllers/hotelController');
+const hotelController = require('../Controllers/hotelController');
 
 // Routes
 router.post('/', hotelController.createHotel);
